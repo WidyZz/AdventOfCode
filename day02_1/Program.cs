@@ -13,12 +13,12 @@ namespace day02_1
             {
                 var splitGame = line.Split(": ");
                 var gameNum = int.Parse(splitGame[0].Split("Game ")[1]);
-                var players = splitGame[1].Split("; ");
+                var sets = splitGame[1].Split("; ");
                 var possible = true;
-                foreach (var player in players)
+                foreach (var set in sets)
                 {
-                    var input = player.Split(", ");
-                    possible = !possible ? false : IsGameLegal(input);
+                    var cubes = set.Split(", ");
+                    possible = !possible ? false : IsGameLegal(cubes);
                 }
 
                 total = possible ? total += gameNum : total;
@@ -32,9 +32,9 @@ namespace day02_1
             var redLegal = true;
             foreach (var cube in cubes)
             {
-                var numAndColor = cube.Split(" ");
-                var number = int.Parse(numAndColor[0]);
-                switch (numAndColor[1])
+                var number = int.Parse(cube.Split(" ")[0]);
+                var color = cube.Split(" ")[1];
+                switch (color)
                 {
                     case "blue":
                         if (number <= 14)
