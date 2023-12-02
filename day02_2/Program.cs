@@ -11,7 +11,6 @@ namespace day02_2
             while (Console.ReadLine() is { } line)
             {
                 var splitGame = line.Split(": ");
-                var gameNum = int.Parse(splitGame[0].Split("Game ")[1]);
                 var sets = splitGame[1].Split("; ");
                 total += getMinimum(sets);
             }
